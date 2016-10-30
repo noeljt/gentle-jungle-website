@@ -650,6 +650,7 @@ ul.sub-menu {
   display: table;
   position: static;
   width: 100%;
+  background-size: 11%;
 }
 
 .vertical-center{
@@ -758,6 +759,7 @@ ul.sub-menu {
   display: table;
   position: static;
   width: 100%;
+  background-size: 9%
 }
 
 #team {
