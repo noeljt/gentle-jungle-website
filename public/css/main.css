@@ -2752,3 +2752,16 @@ span.stButton_gradient,
 .commentBy {
   color: #ea2c00;
 }
+
+.puppy-card {
+  height: 320px;
+  width: 260px;
+  border: solid 1px #AAAAAA;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px;
+}
+.puppy-img {
+  height: 250px;
+  width: 250px;
+}

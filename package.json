@@ -1,0 +1,20 @@
+{
+  "name": "store-website",
+  "version": "1.0.0",
+  "description": "store-website frontend server. Server is only for getting Insta feeds",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GentleJungle/store-website.git"
+  },
+  "author": "luxuc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GentleJungle/store-website/issues"
+  },
+  "homepage": "https://github.com/GentleJungle/store-website#readme"
+}

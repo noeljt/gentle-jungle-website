@@ -3,20 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gentle Jungle pet store at the Meriden Mall, Meriden CT">
-    <title>Home | Gentle Jungle</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Available Puppies | Gentle Jungle</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/lightbox.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet">
-    <link href="css/index.css" rel="stylesheet">
 
-    <!--[if lt IE 9]>
-	    <script src="js/html5shiv.js"></script>
-	    <script src="js/respond.min.js"></script>
-    <![endif]-->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -24,7 +20,7 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 
-<body>
+<body ng-app="getPuppiesImages">
 	<header id="header">
         <div class="container">
             <div class="row">
@@ -49,13 +45,13 @@
                     </button>
 
                     <a class="navbar-brand" href="index.html">
-                    	<h1><img id="logo" src="images/GJLogoLarge.png" alt="logo" class="img-responsive"></h1>
+                        <h1><img id="logo" src="images/GJLogoLarge.png" alt="logo" class="img-responsive"></h1>
                     </a>
 
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li class="dropdown"><a href="#">About Us<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="whoAreWe.html">Who Are We</a></li>
@@ -71,10 +67,10 @@
                                 <li><a href="birds.html">Birds</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown"><a href="portfolio.html">Available Pets<i class="fa fa-angle-down"></i></a>
+                        <li class="dropdown active"><a href="#">Available Pets<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="#">Available Puppies</a></li>
-                                <li><a href="#">Aavilable Kittens</a></li>
+                                <li><a class="active" href="availablePuppies.html">Available Puppies</a></li>
+                                <li><a href="availableKittens.html">Available Kittens</a></li>
                             </ul>
                         </li>
                         <li class="dropdown"><a href="FAQ.html">Help<i class="fa fa-angle-down"></i></a>
@@ -90,63 +86,47 @@
     </header>
     <!--/#header-->
 
-    <section id="home-slider">
-        <div class="container">
-            <div class="row">
-                <div class="main-slider">
-                    <div class="slide-text">
-                        <h1>Come and find new addition to your family</h1>
-                        <p>Most puppies may be taken home for as little as $50.00 per month. No down payment; take them home the same day!
-                        Feel free to stop by or send us an email for more information.</p>
-                    </div>
-                    <img src="images/home/slider/hill.png" class="slider-hill" alt="slider image">
-                    <img src="images/home/slider/house.png" class="slider-house" alt="slider image">
-                    <img src="images/home/slider/sun.png" class="slider-sun" alt="slider image">
-                    <img src="images/home/slider/birds1.png" class="slider-birds1" alt="slider image">
-                    <img src="images/home/slider/birds2.png" class="slider-birds2" alt="slider image">
-                </div>
-            </div>
-        </div>
-        <div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>
-    </section>
-    <!--/#home-slider-->
 
-    <section id="services">
+    <section id="page-breadcrumb">
+        <div class="vertical-center sun">
+             <div class="container">
+                <div class="row">
+                    <div class="action">
+                        <div class="col-sm-12">
+                            <h1 class="title">Available Puppies</h1>
+                            <p>Enjoy our gallery of adorable and available puppies!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+    <!--/#action-->
+
+    <section id="portfolio">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <img class="feature-icon" src="images/home/clock.png" alt="clock icon">
+            <div ng-controller="getImageCtlr" class="row">
+                <div class="portfolio-items padding-top">
+                    <div ng-repeat="puppy in puppies" class="col-xs-6 col-sm-4 col-md-3 portfolio-item branded logos">
+                        <div class="card puppy-card">
+                            <img ng-src="{{ puppy.images.standard_resolution.url }}" class="card-img-top img-responsive" alt="">
+                                <!-- <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a ng-src="{{ puppy.link }}"><i class="fa fa-link"></i></a></li>
+                                        <li><a ng-src="{{ puppy.images.standard_resolution.url }}" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div> -->
+                            <div class="card-block">
+                                <p class="card-text">{{ puppy.caption.text }}</p>
+                            </div>
                         </div>
-                        <h2>Opening Hours</h2>
-                        <p>Mon-Sat 10am-9:00pm</p>
-                        <p>Sun 11am- 6pm</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
-                            <img class="feature-icon" src="images/home/pawprints.png" alt="pawprints icon">
-                        </div>
-                        <h2>All Sorts of Pets</h2>
-                        <p>We have all kinds of animals such as puppies, kittens, bunnies, hamsters, fish, reptiles, chinchillas, and birds! If you would like to find a pet to add as a member to your family stop by and talk to one of us.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="900ms">
-                            <img class="feature-icon" src="images/home/dogfood.png" alt="dogfood icon">
-                        </div>
-                        <h2>And Accessories</h2>
-                        <p>Find food, beds, toys, cages and more! Our friendly employees will help you find
-                        exactly what you're looking for.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--/#services-->
+    <!--/#portfolio-->
+
 
     <footer id="footer">
         <div class="container">
@@ -211,12 +191,16 @@
     </footer>
     <!--/#footer-->
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
     <script type="text/javascript" src="js/lightbox.min.js"></script>
     <script type="text/javascript" src="js/wow.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script type="text/javascript" src="js/gmaps.js"></script>
+    <script type="text/javascript" src="js/getIns.js"></script>
 </body>
 </html>
