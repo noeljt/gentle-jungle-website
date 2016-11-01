@@ -55,7 +55,9 @@ app.controller('getImageCtlr', function($scope, $q, $log) {
 	var promise = getIns();
 	promise.then(
 		function(puppies) {
-			$scope.puppies = puppies;
+			$scope.puppies = puppies
+			$('#puppies').removeClass('hidden').addClass('show')
+			$('#spinner').removeClass('show').addClass('hidden')
 		},
 		function(error) {
 			$log.log(error)

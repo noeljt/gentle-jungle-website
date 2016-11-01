@@ -28,7 +28,7 @@
                    <div class="social-icons pull-right">
                         <ul class="nav nav-pills">
                             <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                            <li><a href=""><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://www.instagram.com/gentlejunglepets/"><i class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -106,10 +106,17 @@
     <section id="portfolio">
         <div class="container">
             <div ng-controller="getImageCtlr" class="row">
-                <div class="portfolio-items padding-top">
-                    <div ng-repeat="puppy in puppies" class="col-xs-6 col-sm-4 col-md-3 portfolio-item branded logos">
+                <div class="show" id="spinner">
+                    <div class="spinner-wrapper">
+                        <i class="fa fa-spinner fa-spin spinner"></i>
+                    </div>
+                </div>
+                <div class="portfolio-items hidden" id="puppies">
+                    <div ng-repeat="puppy in puppies" class="col-xs-12 col-sm-6 col-md-4 portfolio-item branded logos">
                         <div class="card puppy-card">
-                            <img ng-src="{{ puppy.images.standard_resolution.url }}" class="card-img-top img-responsive" alt="">
+                            <a href="{{ puppy.link }}">
+                                <img ng-src="{{ puppy.images.standard_resolution.url }}" class="card-img-top img-responsive" alt="">
+                            </a>
                                 <!-- <div class="portfolio-view">
                                     <ul class="nav nav-pills">
                                         <li><a ng-src="{{ puppy.link }}"><i class="fa fa-link"></i></a></li>
@@ -117,6 +124,7 @@
                                     </ul>
                                 </div> -->
                             <div class="card-block">
+                                <p><i class="fa fa-heart"></i>{{ puppy.likes.count }}</p>
                                 <p class="card-text">{{ puppy.caption.text }}</p>
                             </div>
                         </div>
