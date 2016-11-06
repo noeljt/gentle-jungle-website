@@ -103,14 +103,15 @@
    </section>
     <!--/#action-->
 
-    <section id="portfolio">
+    <section ng-controller="getImageCtlr" id="portfolio">
         <div class="container">
-            <div ng-controller="getImageCtlr" class="row">
+            <div  class="row">
                 <div class="show" id="spinner">
                     <div class="spinner-wrapper">
                         <i class="fa fa-spinner fa-spin spinner"></i>
                     </div>
                 </div>
+                <div class="hidden" id="errorMessage"><h4>{{ errorMessage }}</h4></div>
                 <div class="portfolio-items hidden" id="puppies">
                     <div ng-repeat="puppy in puppies" class="col-xs-12 col-sm-6 col-md-4 portfolio-item branded logos">
                         <div class="card puppy-card">
@@ -130,6 +131,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="text-center" ng-if="!errorMessage">
+                <h3>
+                    <a id="prev" class="not-active" href="#header" ng-click="prev()">Previous</a>
+                    |
+                    <a href="#header" ng-click="next()">Next</a>
+                </h3>
             </div>
         </div>
     </section>

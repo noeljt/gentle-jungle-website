@@ -11,56 +11,77 @@ function selectPuppies(feed) {
 	}
 }
 
-function getIns() {
-	return $q(function() {
-		$.ajax({
-			method: 'GET',
-			url: 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' + ACCESS_TOKEN + '&count=' + FEED_NUMBER,
-			dataType: "jsonp",
-		}).then(
-			function(message) {
-				$log.log( 'success' )
-				$scope.puppies = message.data.filter(selectPuppies)
-			},
-			function() {
-				$log.log( 'failed' )
-			}
-		);
-	})
-}
-
 app.controller('getImageCtlr', function($scope, $q, $log) {
-	$scope.try = 5
-	$scope.puppies = 1;
 
-	function getIns() {
+	var nextUrl, pageNumber
+	var storage = [] //store all the feeds received, so no need to ask for the same feeds again when hit prev or next
+
+	function getIns(URL) {
 		return $q(function(resolve, reject) {
 			$.ajax({
 				method: 'GET',
-				url: 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' + ACCESS_TOKEN + '&count=' + FEED_NUMBER,
+				url: URL,
 				dataType: "jsonp",
 			}).then(
 				function(message) {
-					// $log.log( 'success' )
-					resolve(message.data.filter(selectPuppies))
-				},
-				function(error) {
-					// $log.log( 'failed' )
-					reject(error)
+					// $log.log( message )
+					if (message.meta.code != 200) {
+						reject( message.meta.error_message )
+					} else {
+						resolve( message )
+					}
 				}
 			);
 		})
 	}
 
-	var promise = getIns();
+	var firstUrl = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' + ACCESS_TOKEN + '&count=' + FEED_NUMBER
+	var promise = getIns(firstUrl)
 	promise.then(
-		function(puppies) {
+		function(message) {
+			var puppies = message.data.filter(selectPuppies)
 			$scope.puppies = puppies
+			storage.push(puppies)
+			pageNumber = 0
+			nextUrl = message.pagination.next_url
 			$('#puppies').removeClass('hidden').addClass('show')
 			$('#spinner').removeClass('show').addClass('hidden')
 		},
 		function(error) {
-			$log.log(error)
+			$log.error(error)
+			$('#spinner').removeClass('show').addClass('hidden')
+			$('#errorMessage').removeClass('hidden').addClass('show')
+			$scope.errorMessage = "The application has encountered an unknown error. Our technical staff have been automatically notified and will be looking into this with the utmost urgency."
 		}
 	)
+
+	$scope.next = function() {
+		pageNumber ++
+		if (pageNumber === 1) {
+			$('#prev').removeClass('not-active')
+		}
+		if (pageNumber < storage.length) {
+			$scope.puppies = storage[pageNumber]
+		} else {
+			var promise = getIns(nextUrl)
+			promise.then(
+				function(message) {
+					var puppies = message.data.filter(selectPuppies)
+					$scope.puppies = puppies
+					storage.push(puppies)
+					nextUrl = message.pagination.next_url
+				},
+				function(error) {
+					$log.error(error)
+				}
+			)
+		}
+	}
+
+	$scope.prev = function() {
+		pageNumber --
+		$scope.puppies = storage[pageNumber];
+		if (pageNumber === 0)
+			$('#prev').addClass('not-active')
+	}
 });
