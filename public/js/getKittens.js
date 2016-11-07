@@ -1,11 +1,11 @@
-var app = angular.module('getPuppiesImages', []);
+var app = angular.module('getKittensImages', []);
 
-var ACCESS_TOKEN = '1518439702.1677ed0.9dac48d4464f43cf890c3273f37b79ae';
-var FEED_NUMBER = 20;
+var ACCESS_TOKEN = '1518439702.8c2ef96.dcbd60a7758b4337ad1048bfedf62f27'; // public content scope required
+var FEED_NUMBER = 30;
 
-function selectPuppies(feed) {
+function selectKittens(feed) {
 	for (var i in feed.tags) {
-		if (feed.tags[i] == 'gentlejunglepuppy') {
+		if (feed.tags[i] == 'gentlejunglekitten') {
 			return feed
 		}
 	}
@@ -17,6 +17,7 @@ app.controller('getImageCtlr', function($scope, $q, $log) {
 	var storage = [] //store all the feeds received, so no need to ask for the same feeds again when hit prev or next
 
 	function getIns(URL) {
+		$log.log("hit");
 		return $q(function(resolve, reject) {
 			$.ajax({
 				method: 'GET',
@@ -24,7 +25,6 @@ app.controller('getImageCtlr', function($scope, $q, $log) {
 				dataType: "jsonp",
 			}).then(
 				function(message) {
-					// $log.log( message )
 					if (message.meta.code != 200) {
 						reject( message.meta.error_message )
 					} else {
@@ -35,17 +35,22 @@ app.controller('getImageCtlr', function($scope, $q, $log) {
 		})
 	}
 
+	function display(kittens) {
+		$log.log( kittens )
+		$scope.kittens = kittens
+		storage.push(kittens)
+		pageNumber = 0
+		nextUrl = message.pagination.next_url
+		$('#kittens').removeClass('hidden').addClass('show')
+		$('#spinner').removeClass('show').addClass('hidden')
+	}
+
 	var firstUrl = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' + ACCESS_TOKEN + '&count=' + FEED_NUMBER
 	var promise = getIns(firstUrl)
 	promise.then(
 		function(message) {
-			var puppies = message.data.filter(selectPuppies)
-			$scope.puppies = puppies
-			storage.push(puppies)
-			pageNumber = 0
-			nextUrl = message.pagination.next_url
-			$('#puppies').removeClass('hidden').addClass('show')
-			$('#spinner').removeClass('show').addClass('hidden')
+			var kittens = message.data.filter(selectKittens)
+			display(kittens)
 		},
 		function(error) {
 			$log.error(error)
@@ -66,9 +71,9 @@ app.controller('getImageCtlr', function($scope, $q, $log) {
 			var promise = getIns(nextUrl)
 			promise.then(
 				function(message) {
-					var puppies = message.data.filter(selectPuppies)
-					$scope.puppies = puppies
-					storage.push(puppies)
+					var kittens = message.data.filter(selectKittens)
+					$scope.kittens = kittens
+					storage.push(kittens)
 					nextUrl = message.pagination.next_url
 				},
 				function(error) {
@@ -80,7 +85,7 @@ app.controller('getImageCtlr', function($scope, $q, $log) {
 
 	$scope.prev = function() {
 		pageNumber --
-		$scope.puppies = storage[pageNumber];
+		$scope.puppies = storage[pageNumber]
 		if (pageNumber === 0)
 			$('#prev').addClass('not-active')
 	}
