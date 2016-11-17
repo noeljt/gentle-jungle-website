@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="getPuppiesImages">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Gentle Jungle pet store at the Meriden Mall, Meriden CT">
-    <title>Home | Gentle Jungle</title>
+    <title>Reviews | Gentle Jungle</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 
-<body>
+<body ng-controller="ReviewsCtrl">
 	<header id="header">
         <div class="container">
             <div class="row">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li class="dropdown"><a href="#">About Us<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="whoAreWe.html">Who Are We</a></li>
@@ -92,62 +92,36 @@
     </header>
     <!--/#header-->
 
-    <section id="home-slider">
-        <div class="container">
-            <div class="row">
-                <div class="main-slider">
-                    <div class="slide-text">
-                        <h1>Come and find new addition to your family</h1>
-                        <p>Most puppies may be taken home for as little as $50.00 per month. No down payment; take them home the same day!
-                        Feel free to stop by or send us an email for more information.</p>
+    <section id="page-breadcrumb">
+        <div class="vertical-center sun">
+             <div class="container">
+                <div class="row">
+                    <div class="action">
+                        <div class="col-sm-12">
+                            <h1 class="title">Customer Reviews</h1>
+                            <p>Hear what others have to say</p>
+                        </div>
                     </div>
-                    <img src="images/home/slider/forest.png" class="slider-house" alt="slider image">
-                    <img src="images/home/slider/sun.png" class="slider-sun" alt="slider image">
-                    <img src="images/home/slider/birds1.png" class="slider-birds1" alt="slider image">
-                    <img src="images/home/slider/birds2.png" class="slider-birds2" alt="slider image">
                 </div>
             </div>
         </div>
-        <div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>
-    </section>
-    <!--/#home-slider-->
+   </section>
+    <!--/#page-breadcrumb-->
 
-    <section id="services">
+    <section id="special-order-info" class="choose">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <img class="feature-icon" src="images/home/clock.png" alt="clock icon">
-                        </div>
-                        <h2>Opening Hours</h2>
-                        <p>Mon-Sat 10am-9:00pm</p>
-                        <p>Sun 11am- 6pm</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
-                            <img class="feature-icon" src="images/home/pawprints.png" alt="pawprints icon">
-                        </div>
-                        <h2>All Sorts of Pets</h2>
-                        <p>We have all kinds of animals such as puppies, kittens, bunnies, hamsters, fish, reptiles, chinchillas, and birds! If you would like to find a pet to add as a member to your family stop by and talk to one of us.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="900ms">
-                            <img class="feature-icon" src="images/home/dogfood.png" alt="dogfood icon">
-                        </div>
-                        <h2>And Accessories</h2>
-                        <p>Find food, beds, toys, cages and more! Our friendly employees will help you find
-                        exactly what you're looking for.</p>
-                    </div>
+                <!-- <div class="col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0ms"> -->
+                    <!-- <img src="images/puppies/cover.jpg" class="img-responsive" alt=""> -->
+                <!-- </div> -->
+                <div class="col-sm-6 padding-top wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0ms" ng-repeat="r in reviews">
+                    <p ng-bind="r.yourreviewanythingpositivehelps"></p>
+                    <b class="commentBy">{{r.whatisyourname}}</b> <span class="text-muted" ng-if="r.whatdidyoubuy == 'Puppy' || r.whatdidyoubuy == 'Kitten'"> &mdash; (Bought: {{r.whatdidyoubuy}})</a>
                 </div>
             </div>
         </div>
     </section>
-    <!--/#services-->
+    <!--/#company-information-->
 
     <footer id="footer">
         <div class="container">
@@ -212,12 +186,13 @@
     </footer>
     <!--/#footer-->
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/lightbox.min.js"></script>
     <script type="text/javascript" src="js/wow.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDh9C7bAWMuSjLd9yrW_92_0-jRvs8XQCg"></script>
     <script type="text/javascript" src="js/gmaps.js"></script>
+    <script type="text/javascript" src="js/reviews.js"></script>
 </body>
 </html>
