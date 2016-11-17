@@ -131,18 +131,16 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="testimonial bottom">
                         <h2>Testimonial</h2>
-                        <div class="media" ng-repeat="r in reviews">
+                        <div class="media">
                             <div class="pull-left">
-                                <img class="avatar" src="images/home/smug.png" alt="smug avatar">
+                                <a href="#"><img class="avatar" src="images/home/smug.png" alt="smug avatar"></a>
                             </div>
                             <div class="media-body">
-                                <blockquote ng-bind="r.yourreviewanythingpositivehelps"></blockquote>
-                                <h3><b class="commentBy">{{r.whatisyourname}}</b>
-                                    <span class="text-muted" ng-if="r.whatdidyoubuy == 'Puppy' || r.whatdidyoubuy == 'Kitten'">(Bought: {{r.whatdidyoubuy}})</a>
-                                </h3>
+                                <blockquote>They offer everything you need to start a new life for a dog, cat, hamster, rabbit or anything you want.</blockquote>
+                                <h3>- <b class="commentBy">Briana S.</b></h3>
                             </div>
                          </div>
-                        <!-- <div class="media">
+                        <div class="media">
                             <div class="pull-left">
                                 <a href="#"><img class="avatar" src="images/home/pirate.png" alt="prirate avatar"></a>
                             </div>
@@ -150,7 +148,7 @@
                                 <blockquote> I made numerous visits to the store, it was always very clean with the animals well looked after,  the employees were very knowledgeable and pleasant. </blockquote>
                                 <h3>- <b class="commentBy">Linda F.</b></h3>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
