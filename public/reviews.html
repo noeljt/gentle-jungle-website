@@ -110,12 +110,12 @@
     <section id="special-order-info" class="choose">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0ms">
+                <!-- <div class="col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0ms"> -->
                     <!-- <img src="images/puppies/cover.jpg" class="img-responsive" alt=""> -->
-                </div>
+                <!-- </div> -->
                 <div class="col-sm-6 padding-top wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0ms" ng-repeat="r in reviews">
                     <p ng-bind="r.yourreviewanythingpositivehelps"></p>
-                    <b class="commentBy">{{r.whatisyourname}}</b> &mdash; <span class="text-muted" ng-if="r.whatdidyoubuy == 'Puppy' || r.whatdidyoubuy == 'Kitten'">(Bought: {{r.whatdidyoubuy}})</a>
+                    <b class="commentBy">{{r.whatisyourname}}</b> <span class="text-muted" ng-if="r.whatdidyoubuy == 'Puppy' || r.whatdidyoubuy == 'Kitten'"> &mdash; (Bought: {{r.whatdidyoubuy}})</a>
                 </div>
             </div>
         </div>
