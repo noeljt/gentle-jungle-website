@@ -104,7 +104,8 @@
                 <!-- </div> -->
                 <div class="col-sm-6 padding-top wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0ms" ng-repeat="r in reviews">
                     <p ng-bind="r.yourreviewanythingpositivehelps"></p>
-                    <b class="commentBy">{{r.whatisyourname}}</b> <span class="text-muted" ng-if="r.whatdidyoubuy == 'Puppy' || r.whatdidyoubuy == 'Kitten'"> &mdash; (Bought: {{r.whatdidyoubuy}})</a>
+                    <img src="r.URL" ng-hide="r.URL == '' ">
+                    <b class="commentBy">{{r.whatisyourname}}</b> <span class="text-muted"> &mdash; (Bought: {{r.whatdidyoubuy}})</a>
                 </div>
             </div>
         </div>
