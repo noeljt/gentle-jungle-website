@@ -2030,3 +2030,7 @@ Portfolio Details
 p, h1, h2, h3, address {
   font-weight: 400;
 }
+
+.testimonial-img{
+  max-height: 300px;
+}
