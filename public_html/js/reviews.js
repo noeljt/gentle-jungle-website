@@ -9,7 +9,7 @@ app.controller('ReviewsCtrl', ['$scope', '$http', function ($scope, $http) {
         4: 'Picture',
         5: 'Agree',
         6: 'Review',
-        7: 'ImageURL'
+        7: 'URL'
     }
 
     var load_reviews = function () {
