@@ -9,7 +9,8 @@ app.controller('ReviewsCtrl', ['$scope', '$http', function ($scope, $http) {
         4: 'Picture',
         5: 'Agree',
         6: 'Review',
-        7: 'URL'
+        7: 'URL',
+        8: 'Approved'
     }
 
     var load_reviews = function () {
@@ -43,12 +44,13 @@ app.controller('ReviewsCtrl', ['$scope', '$http', function ($scope, $http) {
                         }
                     }
 
-                    $scope.reviews.push(review);
+                    if (review["approved"] != "") {$scope.reviews.push(review);}
                 }
 
             }
-
-            console.log($scope.reviews);
+            // if ($scope.review["approved"] != "") {
+            	console.log($scope.reviews);
+            // }
 
         });
     }
