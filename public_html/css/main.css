@@ -2040,3 +2040,7 @@ p, h1, h2, h3, address {
   padding: 0 5px;
 }
 
+#disclaimer {
+  font-size: 70%;
+}
+
