@@ -1986,17 +1986,10 @@ Portfolio Details
 }
 
 .puppy-card {
-  height: 365px;
-  width: 315px;
   border: solid 1px #AAAAAA;
   border-radius: 5px;
   margin: 10px;
   padding: 5px;
-}
-
-.puppy-img {
-  height: 304px;
-  width: 304px;
 }
 
 .fa-heart {
@@ -2043,4 +2036,3 @@ p, h1, h2, h3, address {
 #disclaimer {
   font-size: 70%;
 }
-

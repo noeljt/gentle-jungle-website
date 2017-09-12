@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/GentleJungle/store-website/issues"
   },
-  "homepage": "https://github.com/GentleJungle/store-website#readme"
+  "homepage": "https://github.com/GentleJungle/store-website#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
 }

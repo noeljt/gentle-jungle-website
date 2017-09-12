@@ -96,18 +96,18 @@
 
     <section ng-controller="getImageCtlr" id="portfolio">
         <div class="container">
-            <div  class="row">
-                <div class="show" id="spinner">
-                    <div class="spinner-wrapper">
-                        <i class="fa fa-spinner fa-spin spinner"></i>
-                    </div>
+            <div class="show" id="spinner">
+                <div class="spinner-wrapper">
+                    <i class="fa fa-spinner fa-spin spinner"></i>
                 </div>
-                <div class="hidden" id="errorMessage"><h4>{{ errorMessage }}</h4></div>
-                <div class="portfolio-items hidden" id="puppies">
-                    <div ng-repeat="puppy in puppies" class="col-xs-12 col-sm-6 col-md-4 portfolio-item branded logos">
+            </div>
+            <div class="hidden" id="errorMessage"><h4>{{ errorMessage }}</h4></div>
+            <div class="portfolio-items hidden" id="puppies">
+                <div ng-repeat="puppy_row in puppies" class="row">
+                    <div ng-repeat="puppy in puppy_row" class="col-xs-12 col-sm-6 col-md-4 portfolio-item branded logos">
                         <div class="card puppy-card">
                             <a href="{{ puppy.link }}">
-                                <img ng-src="{{ puppy.images.standard_resolution.url }}" class="card-img-top puppy-img" alt="">
+                                <img ng-src="{{ puppy.images.standard_resolution.url }}" class="card-img-top img-responsive" alt="">
                             </a>
                             <div class="card-block">
                                 <p><i class="fa fa-heart"></i>{{ puppy.likes.count }}</p>

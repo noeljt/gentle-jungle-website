@@ -1,3 +1,16 @@
+var breakpoint = "";
+
+if ($(window).width() < 768) {
+    breakpoint = "xs";
+}
+else if ($(window).width() >= 768 &&  $(window).width() <= 992) {
+    breakpoint = "sm";
+}
+else {
+	// Not really, but for the purpose of this code it will never need to be lg
+    breakpoint = "md";
+}
+
 var app = angular.module('getPuppiesImages', []);
 
 var ACCESS_TOKEN = '1518439702.1677ed0.9dac48d4464f43cf890c3273f37b79ae'; // basic scope access token required
@@ -39,9 +52,29 @@ app.controller('getImageCtlr', function($scope, $q, $log) {
 	var promise = getIns(firstUrl)
 	promise.then(
 		function(message) {
-			var puppies = message.data.filter(selectPuppies)
-			$scope.puppies = puppies
-			storage.push(puppies)
+			var puppies = message.data.filter(selectPuppies);
+			var count = 0;
+			var new_puppies = [];
+			var puppy_row = [];
+			for (var puppy in puppies) {
+				count++;
+				puppy_row.push(puppies[puppy]);
+				if (breakpoint == "xs" && count == 1) {
+					new_puppies.push(puppy_row);
+					puppy_row = [];
+					count = 0;
+				} else if (breakpoint == "sm" && count == 2) {
+					new_puppies.push(puppy_row);
+					puppy_row = [];
+					count = 0;					
+				} else if (breakpoint == "md" && count == 3) {
+					new_puppies.push(puppy_row);
+					puppy_row = [];
+					count = 0;						
+				}
+			}
+			$scope.puppies = new_puppies
+			storage.push(new_puppies)
 			pageNumber = 0
 			nextUrl = message.pagination.next_url
 			$('#puppies').removeClass('hidden').addClass('show')
@@ -66,10 +99,30 @@ app.controller('getImageCtlr', function($scope, $q, $log) {
 			var promise = getIns(nextUrl)
 			promise.then(
 				function(message) {
-					var puppies = message.data.filter(selectPuppies)
-					$scope.puppies = puppies
-					storage.push(puppies)
-					$log.log(storage)
+					var puppies = message.data.filter(selectPuppies);
+					var count = 0;
+					var new_puppies = [];
+					var puppy_row = [];
+					for (var puppy in puppies) {
+						count++;
+						puppy_row.push(puppies[puppy]);
+						if (breakpoint == "xs" && count == 1) {
+							new_puppies.push(puppy_row);
+							puppy_row = []; 
+							count = 0;
+						} else if (breakpoint == "sm" && count == 2) {
+							new_puppies.push(puppy_row);
+							puppy_row = []; 
+							count = 0;					
+						} else if (breakpoint == "md" && count == 3) {
+							new_puppies.push(puppy_row);
+							puppy_row = []; 
+							count = 0;						
+						}
+					}
+					$scope.puppies = new_puppies;
+					console.log(new_puppies);
+					storage.push(new_puppies);
 					nextUrl = message.pagination.next_url
 				},
 				function(error) {
@@ -80,8 +133,8 @@ app.controller('getImageCtlr', function($scope, $q, $log) {
 	}
 
 	$scope.prev = function() {
-		pageNumber --
-		$scope.puppies = storage[pageNumber]
+		pageNumber --;
+		$scope.puppies = storage[pageNumber];
 		if (pageNumber === 0)
 			$('#prev').addClass('not-active')
 	}
