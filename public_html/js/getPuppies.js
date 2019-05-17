@@ -13,7 +13,7 @@ else {
 
 var app = angular.module('getPuppiesImages', []);
 
-var ACCESS_TOKEN = '1518439702.1677ed0.9dac48d4464f43cf890c3273f37b79ae'; // basic scope access token required
+var ACCESS_TOKEN = '1518439702.1677ed0.d0e5bab887f74ce58233b3a468a551bb'; // basic scope access token required
 var FEED_NUMBER = 20;
 
 function selectPuppies(feed) {
