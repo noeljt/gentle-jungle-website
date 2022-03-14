@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +11,19 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/lightbox.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-</head><!--/head-->
+</head>
+<!--/head-->
 
 <body ng-app="getPuppiesImages">
-	<header id="header">
+    <header id="header">
         <div class="navbar navbar-inverse" role="banner">
             <div class="container">
                 <div class="navbar-header">
@@ -40,7 +42,8 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="index.html">Home</a></li>
-                        <li class="dropdown"><a class="sm-dropdown" href="#">About Us<i class="fa fa-angle-down"></i></a>
+                        <li class="dropdown"><a class="sm-dropdown" href="#">About Us<i
+                                    class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="whoAreWe.html">Who Are We</a></li>
                                 <li><a href="ourStory.html">Our Story</a></li>
@@ -55,20 +58,20 @@
                                 <li><a href="birds.html">Birds</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown"><a class="sm-dropdown" href="#">Available Pets<i class="fa fa-angle-down"></i></a>
+                        <li class="dropdown"><a class="sm-dropdown" href="#">Available Pets<i
+                                    class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="availablePuppies.html">Available Puppies</a></li>
                                 <li><a href="availableKittens.html">Available Kittens</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown"><a class="sm-dropdown" href="FAQ.html">Help<i class="fa fa-angle-down"></i></a>
+                        <li class="dropdown"><a class="sm-dropdown" href="FAQ.html">Help<i
+                                    class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="FAQ.html">FAQ</a></li>
                                 <li><a href="training.html">Training</a></li>
-                                <li><a href="reviews.html">Reviews</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown"><a href="reviews.html">Reviews</a></li>
                     </ul>
                 </div>
             </div>
@@ -79,19 +82,20 @@
 
     <section id="page-breadcrumb">
         <div class="vertical-center sun">
-             <div class="container">
+            <div class="container">
                 <div class="row">
                     <div class="action">
                         <div class="col-sm-12">
                             <h1 class="title">Available Puppies</h1>
                             <p>Enjoy our gallery of adorable and available puppies!</p>
-                            <p id="disclaimer">*There is no guarantee any pictured puppy is still available for sale, please call to ensure the puppy you want is still available.</p>
+                            <p id="disclaimer">*There is no guarantee any pictured puppy is still available for sale,
+                                please call to ensure the puppy you want is still available.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-   </section>
+    </section>
     <!--/#action-->
 
     <section ng-controller="getImageCtlr" id="portfolio">
@@ -101,13 +105,17 @@
                     <i class="fa fa-spinner fa-spin spinner"></i>
                 </div>
             </div>
-            <div class="hidden" id="errorMessage"><h4>{{ errorMessage }}</h4></div>
+            <div class="hidden" id="errorMessage">
+                <h4>{{ errorMessage }}</h4>
+            </div>
             <div class="portfolio-items hidden" id="puppies">
                 <div ng-repeat="puppy_row in puppies" class="row">
-                    <div ng-repeat="puppy in puppy_row" class="col-xs-12 col-sm-6 col-md-4 portfolio-item branded logos">
+                    <div ng-repeat="puppy in puppy_row"
+                        class="col-xs-12 col-sm-6 col-md-4 portfolio-item branded logos">
                         <div class="card puppy-card">
                             <a href="{{ puppy.link }}">
-                                <img ng-src="{{ puppy.images.standard_resolution.url }}" class="card-img-top img-responsive" alt="">
+                                <img ng-src="{{ puppy.images.standard_resolution.url }}"
+                                    class="card-img-top img-responsive" alt="">
                             </a>
                             <div class="card-block">
                                 <p><i class="fa fa-heart"></i>{{ puppy.likes.count }}</p>
@@ -139,20 +147,22 @@
                     <div class="contact-info bottom">
                         <h2>Contacts</h2>
                         <p>Social Media
-                            <a href="https://www.facebook.com/GentleJunglePets"><i class="fa fa-facebook social-icon"></i></a>
-                            <a href="https://www.instagram.com/gentlejunglepets"><i class="fa fa-instagram social-icon"></i></a>
+                            <a href="https://www.facebook.com/GentleJunglePets"><i
+                                    class="fa fa-facebook social-icon"></i></a>
+                            <a href="https://www.instagram.com/gentlejunglepets"><i
+                                    class="fa fa-instagram social-icon"></i></a>
                         </p>
                         <address>
-                        Phone: +1 (203)-238-0507 <br>
-                        Fax: +1 (203)-238-0509 <br>
+                            Phone: +1 (203)-238-0507 <br>
+                            Fax: +1 (203)-238-0509 <br>
                         </address>
 
                         <h2>Address</h2>
                         <address>
-                        The Meriden Mall<br>
-                        Westfield Shopping Center<br>
-                        470 Lewis Avenue<br>
-                        Meriden, CT 06451<br>
+                            The Meriden Mall<br>
+                            Westfield Shopping Center<br>
+                            470 Lewis Avenue<br>
+                            Meriden, CT 06451<br>
                         </address>
                     </div>
                 </div>
@@ -164,7 +174,7 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="copyright-text text-center">
-                        <p>&copy; Gentle Jungle 2016. All Rights Reserved.</p>
+                        <p>&copy; Gentle Jungle 2022. All Rights Reserved.</p>
                     </div>
                 </div>
             </div>
@@ -173,15 +183,17 @@
     <!--/#footer-->
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-js-1.5.6.min.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
     <script type="text/javascript" src="js/lightbox.min.js"></script>
     <script type="text/javascript" src="js/wow.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDh9C7bAWMuSjLd9yrW_92_0-jRvs8XQCg"></script>
+    <script type="text/javascript"
+        src="https://maps.google.com/maps/api/js?key=AIzaSyDh9C7bAWMuSjLd9yrW_92_0-jRvs8XQCg"></script>
     <script type="text/javascript" src="js/gmaps.js"></script>
     <script type="text/javascript" src="js/getPuppies.js"></script>
 </body>
+
 </html>
